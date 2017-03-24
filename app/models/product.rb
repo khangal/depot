@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+  include ActiveModel::Serializers::Xml
+
+  # attr_accessor :
+
   has_many :line_items
   has_many :orders, through: :line_items
 
