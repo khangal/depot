@@ -30,7 +30,7 @@
 
   <div class="field">
     <%= f.label :pay_type, t('.pay_type') %>
-    <%= f.select :pay_type, Order.pay_types.keys,
+    <%= f.select :pay_type, options_for_payment,
                   prompt: 'Select a payment method' %>
   </div>
 
