@@ -1,5 +1,9 @@
+require 'active_support/core_ext/numeric/bytes'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  # config.logger = Logger.new(config.paths['log'].first, 'daily')
+  config.logger = Logger.new(config.paths['log'].first, 10, 10.megabytes)
 
   # Code is not reloaded between requests.
   config.cache_classes = true

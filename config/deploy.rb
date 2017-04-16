@@ -29,6 +29,16 @@ role :db, domain
 
 server domain, user: user, roles: %w{app db web}
 
+namespace :deploy do
+  task :copy_database_config do
+    on roles(:all) do
+      execute "cp #{shared_path}/database.yml #{current_path}/config"
+    end
+  end
+end
+
+after "deploy:updated", "deploy:copy_database_config"
+
 # As Capistrano executes in a non-interactive mode and therefore doesn't cause
 # any of your shell profile scripts to be run, the following might be needed
 # if (for example) you have locally installed gems or applications.  Note:
